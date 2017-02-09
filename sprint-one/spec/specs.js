@@ -82,7 +82,7 @@ define([
         stack.push('a');
         stack.push('b');
         stack.push('c');
-        stack.pop();
+        stack.pop(); //c
         expect(stack.pop()).to.equal('b');
       });
     });
