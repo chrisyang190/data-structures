@@ -2,7 +2,7 @@
 
 // Instantiate a new graph
 var Graph = function() {
-   this.storage = {}; //{3: {value:3, edge: [2], 2:{value:2, edge:[3]}}
+   this.storage = {}; 
 };
 
 // Add a node to the graph, passing in the node's value.
@@ -58,9 +58,9 @@ Graph.prototype.forEachNode = function(cb) {
   // return function() {
   //   //debugger;
    //return cb.apply(val[key], arguments);
-    _.each(this.storage, function (val, key) {
-      cb(key);
-    });
+  _.each(this.storage, function (val, key) {
+    cb(key);
+  });
   // };
   // return function() {
   //   //var args = Array.prototype.slice.call(arguments);
