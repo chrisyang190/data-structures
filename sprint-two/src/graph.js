@@ -57,18 +57,18 @@ Graph.prototype.forEachNode = function(cb) {
   // debugger;
   // return function() {
   //   //debugger;
-  //   _.each(this.storage, function (val) {
-  //     return cb.apply(this.storage.val, arguments);
-  //     // return cb(val);
-  //   });
+   //return cb.apply(val[key], arguments);
+    _.each(this.storage, function (val, key) {
+      cb(key);
+    });
   // };
-  return function() {
-    //var args = Array.prototype.slice.call(arguments);
-    // for (var key in this.storage) {
-      debugger;
-      return cb.apply(this, arguments);
+  // return function() {
+  //   //var args = Array.prototype.slice.call(arguments);
+  //   // for (var key in this.storage) {
+  //     debugger;
+  //     return cb.apply(this, arguments);
     // }
-  };
+  // };
 };
 
 var graphNode = function(value) {
@@ -82,6 +82,13 @@ var graphNode = function(value) {
 };
 /*
  * Complexity: What is the time complexity of the above functions?
+addNode:
+contains:
+removeNode:
+hasEdge:
+addEdge:
+removeEdge
+forEachNode:
  */
 
 
