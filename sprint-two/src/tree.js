@@ -13,7 +13,7 @@ var treeMethods = {};
 
 treeMethods.addChild = function(value) {
   //debugger;
-  this.children.push(Node(value));
+  this.children.push(treeNode(value));
 
 };
 
@@ -47,14 +47,14 @@ treeMethods.contains = function(target) {
   return contains;
 };
 
-var Node = function(value) {
+var treeNode = function(value) {
   var node = {};
 
   node.value = value;
   node.children = [];
   //node.next = null;
   node.addChild = function(value) {
-    this.children.push(Node(value));
+    this.children.push(treeNode(value));
   };
 
   return node;
