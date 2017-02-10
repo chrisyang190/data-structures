@@ -82,13 +82,13 @@ var graphNode = function(value) {
 };
 /*
  * Complexity: What is the time complexity of the above functions?
-addNode:
-contains:
-removeNode:
-hasEdge:
-addEdge:
-removeEdge
-forEachNode:
+addNode: O(1)
+contains:O(N)
+removeNode: O(N)
+hasEdge: O(1)
+addEdge: O(1)
+removeEdge O(1)
+forEachNode: O(N)
  */
 
 
