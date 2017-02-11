@@ -6,9 +6,9 @@ var LinkedList = function() {
   list.addToTail = function(value) {
     //list.tail = value;
     //debugger;
-    list.tail = Node(value);
+    list.tail = new Node(value);
     if (list.head === null /*&& list.tail !== null*/) { 
-      list.head = Node(value);
+      list.head = new Node(value);
     }
 
   };

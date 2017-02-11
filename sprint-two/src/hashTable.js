@@ -7,8 +7,18 @@ var HashTable = function() {
 };
 
 HashTable.prototype.insert = function(k, v) {
+  // Get index from hashing function
   var index = getIndexBelowMaxForKey(k, this._limit);
-  var tempIdx = index + 1;
+  
+  // Get the bucket at index
+  var bucket = this._storage[index];
+
+  // Create tuple to insert into bucket
+  var tuple = [k, v];
+
+
+  
+
  // var storageKey = this._storage[this._storage.get(index/*0*/)];
   // debugger;
 
