@@ -11,7 +11,7 @@
 //   limitedArray.set(3, 'hi');
 //   limitedArray.get(3); // returns 'hi'
 
-var LimitedArray = function(limit) {
+var LimitedArray = function(limit) { // _.storage
   var storage = [];
 
   var limitedArray = {};

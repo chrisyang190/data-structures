@@ -12,6 +12,7 @@ describe('binarySearchTree', function() {
   });
 
   it('should insert values at the correct location in the tree', function() {
+    //debugger;
     binarySearchTree.insert(2);
     binarySearchTree.insert(3);
     binarySearchTree.insert(7);
@@ -21,6 +22,7 @@ describe('binarySearchTree', function() {
   });
 
   it('should have a working "contains" method', function() {
+   // debugger;
     binarySearchTree.insert(2);
     binarySearchTree.insert(3);
     binarySearchTree.insert(7);
@@ -33,6 +35,7 @@ describe('binarySearchTree', function() {
     var func = function(value) { array.push(value); };
     binarySearchTree.insert(2);
     binarySearchTree.insert(3);
+    // debugger;
     binarySearchTree.depthFirstLog(func);
     expect(array).to.eql([5, 2, 3]);
   });

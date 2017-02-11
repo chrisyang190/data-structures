@@ -2,13 +2,13 @@
 
 // Instantiate a new graph
 var Graph = function() {
-   this.storage = {}; //{3: {value:3, edge: [2], 2:{value:2, edge:[3]}}
+  this.storage = {}; 
 };
 
 // Add a node to the graph, passing in the node's value.
 Graph.prototype.addNode = function(value) {
-  var create = graphNode(value);
-  this.storage[value] = create;
+  var node = new GraphNode(value);
+  this.storage[value] = node;
 };
 
 // Return a boolean value indicating if the value passed to contains is represented in the graph.
@@ -40,6 +40,8 @@ Graph.prototype.hasEdge = function(fromNode, toNode) {
 
 // Connects two nodes in a graph by adding an edge between them.
 Graph.prototype.addEdge = function(fromNode/*3*/, toNode/*2*/) {
+
+  // 
   this.storage[fromNode].edge[toNode] = toNode;
   this.storage[toNode].edge[fromNode] = fromNode;
   // this.storage[fromNode].edge.push(toNode);
@@ -57,21 +59,21 @@ Graph.prototype.forEachNode = function(cb) {
   // debugger;
   // return function() {
   //   //debugger;
-  //   _.each(this.storage, function (val) {
-  //     return cb.apply(this.storage.val, arguments);
-  //     // return cb(val);
-  //   });
+   //return cb.apply(val[key], arguments);
+  _.each(this.storage, function (val, key) {
+    cb(key);
+  });
   // };
-  return function() {
-    //var args = Array.prototype.slice.call(arguments);
-    // for (var key in this.storage) {
-      debugger;
-      return cb.apply(this, arguments);
+  // return function() {
+  //   //var args = Array.prototype.slice.call(arguments);
+  //   // for (var key in this.storage) {
+  //     debugger;
+  //     return cb.apply(this, arguments);
     // }
-  };
+  // };
 };
 
-var graphNode = function(value) {
+var GraphNode = function(value) {
   var node = {};
 
   node.value = value;
@@ -82,6 +84,13 @@ var graphNode = function(value) {
 };
 /*
  * Complexity: What is the time complexity of the above functions?
+addNode: O(1)
+contains:O(N)
+removeNode: O(N)
+hasEdge: O(1)
+addEdge: O(1)
+removeEdge O(1)
+forEachNode: O(N)
  */
 
 

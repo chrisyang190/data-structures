@@ -1,11 +1,10 @@
 var Tree = function(value) {
   var newTree = {};
-  newTree.value = value;
-
-  _.extend(newTree, treeMethods);
-  // your code here
+  newTree.value = value;  
   newTree.children = [];  // fix me
 
+  _.extend(newTree, treeMethods);
+  
   return newTree;
 };
 
@@ -19,6 +18,8 @@ treeMethods.addChild = function(value) {
 
 treeMethods.contains = function(target) {
   var contains = false;
+
+
   var traverseTree = function(node) {
 
 //base case
