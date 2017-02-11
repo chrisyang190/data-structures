@@ -8,16 +8,22 @@ var HashTable = function() {
 
 HashTable.prototype.insert = function(k, v) {
   // Get index from hashing function
-  var index = getIndexBelowMaxForKey(k, this._limit);
-  
-  // Get the bucket at index
-  var bucket = [this._storage[index]];
-
+  var index = getIndexBelowMaxForKey(k, this._limit); // 3
   // Create tuple to insert into bucket
   var tuple = [k, v];
 
+  // Get the bucket at index
+  if (this._storage[index] === undefined) {
+    var bucket = [];
+    bucket.push(tuple);
+    this._storage[index] = bucket;
+  } else if (this._storage[index][0][0] === k) { // condition for if key already exists at that index
+    this._storage[index][0][1] = v;
+  } else {
+    this._storage[index].push(tuple);
+  }
 
-  return bucket.push(tuple);
+  //return bucket.push(tuple);
 
 //return this._storage.set(index, v);
 
@@ -39,24 +45,46 @@ HashTable.prototype.insert = function(k, v) {
   
 };
 
+
 HashTable.prototype.retrieve = function(k) {
   var index = getIndexBelowMaxForKey(k, this._limit);
   // debugger;
-  return this._storage.get(index); // value
+
+  for (var i = 0; i < this._storage[index].length; i++) {
+  // _.each(this._storage[index], function(s) {
+    if (this._storage[index][i][0] === k) {
+      return this._storage[index][i][1];
+    }
+  }
+
+  //return this._storage.get(index[0][k]); // value
 };
 
 HashTable.prototype.remove = function(k) {
   var index = getIndexBelowMaxForKey(k, this._limit);
-  // debugger;
-  // this._storage[this._storage.get(index)] = undefined;
-  this._storage[this._storage.set(index)] = undefined;
-  //return this._storage[this._storage.get(index)];
+  //this._storage[this._storage.set(index)] = undefined;
+  for (var i = 0; i < this._storage[index].length; i++) {
+  // _.each(this._storage[index], function(s) {
+    if (this._storage[index][i][0] === k) {
+      this._storage[index][i][1] = undefined;
+    }
+  }
 };
 
 
 
 /*
  * Complexity: What is the time complexity of the above functions?
+
+ insert:
+   should be: O(1)
+   our method: O(1)
+ retrieve:
+    should be: O(1)
+    our method: O(N)
+ remove:
+    should be: O(1)
+    our method: O(N)
  */
 
 

@@ -14,7 +14,9 @@ describe('hashTable', function() {
   });
 
   it('should store values that were inserted', function() {
+    // debugger;
     hashTable.insert('Steven', 'Seagal');
+    // hashTable.insert('foo', 'bar');
     expect(hashTable.retrieve('Steven')).to.equal('Seagal');
   });
 
@@ -39,7 +41,7 @@ describe('hashTable', function() {
     var v1 = 'val1';
     var v2 = 'val2';
     var oldHashFunction = window.getIndexBelowMaxForKey;
-     // debugger;
+    //debugger;
     window.getIndexBelowMaxForKey = function() { return 0; };
     hashTable.insert(v1, v1);
     hashTable.insert(v2, v2);
