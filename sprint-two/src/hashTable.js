@@ -11,13 +11,15 @@ HashTable.prototype.insert = function(k, v) {
   var index = getIndexBelowMaxForKey(k, this._limit);
   
   // Get the bucket at index
-  var bucket = this._storage[index];
+  var bucket = [this._storage[index]];
 
   // Create tuple to insert into bucket
   var tuple = [k, v];
 
 
-  
+  return bucket.push(tuple);
+
+//return this._storage.set(index, v);
 
  // var storageKey = this._storage[this._storage.get(index/*0*/)];
   // debugger;
@@ -29,7 +31,7 @@ HashTable.prototype.insert = function(k, v) {
     //return this._storage.set(index + 1, v); // value = v1
                                   // value = v2   
   // } else {
-    return this._storage.set(index, v);
+    
   // } else {
   //   var tempIdx = Math.floor(Math.random() * this._limit);
   //   return this._storage.set(tempIdx, v);
