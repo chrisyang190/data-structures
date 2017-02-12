@@ -12,37 +12,19 @@ HashTable.prototype.insert = function(k, v) {
   // Create tuple to insert into bucket
   var tuple = [k, v];
 
+  var bucket = this._storage[index] || [];
+
   // Get the bucket at index
-  if (this._storage[index] === undefined) {
-    var bucket = [];
-    bucket.push(tuple);
-    this._storage[index] = bucket;
-  } else if (this._storage[index][0][0] === k) { // condition for if key already exists at that index
-    this._storage[index][0][1] = v;
-  } else {
-    this._storage[index].push(tuple);
-  }
-
-  //return bucket.push(tuple);
-
-//return this._storage.set(index, v);
-
- // var storageKey = this._storage[this._storage.get(index/*0*/)];
-  // debugger;
-
-  // if (tempIdx !== index) {
-  //if (this._storage.get(index) !== undefined) {
-    //console.log('hello');
-    //debugger;
-    //return this._storage.set(index + 1, v); // value = v1
-                                  // value = v2   
-  // } else {
-    
-  // } else {
-  //   var tempIdx = Math.floor(Math.random() * this._limit);
-  //   return this._storage.set(tempIdx, v);
-  // }
   
+  // traverse through each bucket, reassign if there's same key in the same bucket
+  for (var i = 0; i < bucket.length; i++) {
+    if (bucket[i][0] === k) {
+      bucket[i][1] = v;
+      return;
+    }
+  }
+  bucket.push(tuple);
+  this._storage[index] = bucket;
 };
 
 
@@ -51,22 +33,19 @@ HashTable.prototype.retrieve = function(k) {
   // debugger;
 
   for (var i = 0; i < this._storage[index].length; i++) {
-  // _.each(this._storage[index], function(s) {
-    if (this._storage[index][i][0] === k) {
+    if (this._storage[index][i] === undefined) {
+      return undefined;
+    } else if (this._storage[index][i][0] === k) {
       return this._storage[index][i][1];
     }
   }
-
-  //return this._storage.get(index[0][k]); // value
 };
 
 HashTable.prototype.remove = function(k) {
   var index = getIndexBelowMaxForKey(k, this._limit);
-  //this._storage[this._storage.set(index)] = undefined;
   for (var i = 0; i < this._storage[index].length; i++) {
-  // _.each(this._storage[index], function(s) {
     if (this._storage[index][i][0] === k) {
-      this._storage[index][i][1] = undefined;
+      this._storage[index][i] = undefined;
     }
   }
 };
